@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word cloud</title>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 60%;
+            height: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 10%;
+            padding: 0%;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="data1">data 1</button>
+    <button id="data2">data 2</button>
+    
+    <script>
+        anychart.onDocumentReady(function() {
+        var data1 = [
+            {"x": "Mandarin chinese", "value": 10900, "category": "Sino-Tibetan"},
+            {"x": "English", "value": 9830, "category": "Indo-European"},
+            {"x": "Hindusstani", "value": 5440, "category": "Indo-European"},
+            {"x": "Spanish", "value": 5270, "category": "Indo-European"},
+            {"x": "Arabic", "value": 4220, "category": "Afro-Asiatic"},
+            {"x": "Malay", "value": 2810, "category": "Austronesian"},
+            {"x": "Russian", "value": 2670, "category": "Indo-European"},
+        ];
+
+        var data2 = [
+            {"x": "Bengali", "value": 2610, "category": "Indo-European"},
+            {"x": "Portuguese", "value": 2290, "category": "Indo-European"},
+            {"x": "French", "value": 2290, "category": "Indo-European"},
+            {"x": "Hausa", "value": 1500, "category": "Afro-Asiatic"},
+            {"x": "Punjabi", "value": 1480, "category": "Indo-European"},
+            {"x": "Japanese", "value": 1290, "category": "Japonic"},
+            {"x": "German", "value": 1290, "category": "Indo-European"},
+            {"x": "Persian", "value": 1210, "category": "Indo-European"}
+        ];
+
+        var data = data1;
+
+        document.getElementById("data1").addEventListener("click", funcao_data1);
+        document.getElementById("data2").addEventListener("click", funcao_data2);
+
+        function funcao_data1() {
+            data = data1;
+            // create a tag (word) cloud chart
+            var chart = anychart.tagCloud(data);
+            // set a chart title
+            chart.title('15 most spoken languages')
+            // set an array of angles at which the words will be laid out
+            chart.angles([0])
+            // enable a color range
+            chart.colorRange(true);
+            // set the color range length
+            chart.colorRange().length('60%');
+
+            // display the word cloud chart
+            chart.container("container");
+            chart.draw();
+        }
+        
+        function funcao_data2() {
+            data = data2;
+            // create a tag (word) cloud chart
+            var chart = anychart.tagCloud(data);
+            // set a chart title
+            chart.title('15 most spoken languages')
+            // set an array of angles at which the words will be laid out
+            chart.angles([0])
+            // enable a color range
+            chart.colorRange(true);
+            // set the color range length
+            chart.colorRange().length('60%');
+
+            // display the word cloud chart
+            chart.container("container");
+            chart.draw();
+        }
+
+        // create a tag (word) cloud chart
+        var chart = anychart.tagCloud(data);
+
+        // set a chart title
+        chart.title('15 most spoken languages')
+        // set an array of angles at which the words will be laid out
+        chart.angles([0])
+        // enable a color range
+        chart.colorRange(true);
+        // set the color range length
+        chart.colorRange().length('60%');
+
+        // display the word cloud chart
+        chart.container("container");
+        chart.draw();
+        });
+    </script>
+</body>
+</html>
